@@ -7,15 +7,24 @@ function Education() {
       <ul className="education-list">
         {profile.education.map((entry) => (
           <li key={entry.institution} className="education-entry">
-            <h3>{entry.institution}</h3>
-            <p className="dates">
-              {entry.credential}, {entry.field}
-              {entry.location ? ` · ${entry.location}` : ''}
-            </p>
-            <p className="dates">
-              {entry.start} – {entry.end}
-              {entry.cgpa ? ` · CGPA: ${entry.cgpa}` : ''}
-            </p>
+            <div className="education-entry-header">
+              <div>
+                <h3>{entry.institution}</h3>
+                <p className="dates">
+                  {entry.credential}, {entry.field}
+                  {entry.location ? ` · ${entry.location}` : ''}
+                </p>
+                <p className="dates">
+                  {entry.start} – {entry.end}
+                </p>
+              </div>
+              {entry.cgpa && (
+                <span className="metric-chip grade-badge">
+                  <span className="metric-value">{entry.cgpa}</span>
+                  <span className="metric-label">CGPA</span>
+                </span>
+              )}
+            </div>
           </li>
         ))}
       </ul>

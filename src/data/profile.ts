@@ -1,15 +1,22 @@
 // Single source of truth for portfolio content.
 // Update this file to change resume/skills/experience data — no component edits needed.
 
+export interface Metric {
+  value: string
+  label: string
+}
+
 export interface ExperienceEntry {
   company: string
   role: string
   location?: string
+  sector?: string
   start: string // ISO date, e.g. "2025-03-03"
   end: string | 'present'
   current: boolean
   stack: string[]
   highlights: string[]
+  metrics?: Metric[]
   newSkillsLearned?: string[]
 }
 
@@ -36,8 +43,10 @@ export interface ProfileLinks {
 
 export interface Profile {
   name: string
-  title: string
+  role: string
   summary: string
+  stats: Metric[]
+  domains: string[]
   experience: ExperienceEntry[]
   skillGroups: SkillGroup[]
   education: EducationEntry[]
@@ -47,20 +56,30 @@ export interface Profile {
 
 export const profile: Profile = {
   name: 'Prachi Vats',
-  title: 'Software Development Engineer (Frontend) | React | React Native',
+  role: 'Software Development Engineer',
   summary:
-    'Frontend Software Engineer with 4+ years of experience building scalable web and mobile applications using React, React Native, JavaScript, TypeScript, and Next.js. Experienced in performance optimization, state management, and API integration, with current focus on taking web apps to shippable desktop products with Tauri, SSO integration, and AI-assisted development practices.',
+    "I turn product requirements into fast, accessible interfaces — from a Saudi bank's finance app to a large-scale e-commerce platform — across React, React Native, and Next.js. Right now I'm pushing into new territory: shipping web apps as native desktop products with Tauri, and using AI-assisted workflows (like the one that built this site) to move faster without cutting corners.",
+
+  stats: [
+    { value: '4+', label: 'Years of experience' },
+    { value: '4', label: 'Industries worked across' },
+    { value: '85%', label: 'Test coverage delivered' },
+    { value: '70+', label: 'Developers & students trained' },
+  ],
+
+  domains: ['Legal & Tax Tech', 'Banking & Fintech', 'E-commerce', 'EdTech'],
 
   experience: [
     {
       company: 'Taxmann Technologies',
       role: 'Software Engineer',
+      sector: 'Legal & Tax Tech',
       start: '2025-03-03',
       end: 'present',
       current: true,
       stack: ['React', 'React Native', 'TypeScript', 'JavaScript'],
       highlights: [
-        'Working on the core React / React Native stack, extending prior experience into new platform and delivery concerns.',
+        'Extending the core React / React Native stack into new platform and delivery territory.',
       ],
       newSkillsLearned: [
         'Indexing',
@@ -73,47 +92,52 @@ export const profile: Profile = {
       company: 'Newgen Software',
       role: 'Software Engineer',
       location: 'Noida',
+      sector: 'Banking & Fintech',
       start: '2025-01-01',
       end: '2025-02-27',
       current: false,
       stack: ['React', 'React Native', 'Redux Thunk', 'Axios'],
       highlights: [
-        'Built a large-scale digital finance platform for a leading Saudi Arabian bank, delivering Cash Finance and Auto Finance solutions across Android, iOS, and Web platforms.',
-        'Developed responsive, cross-platform interfaces using React, React Native, Redux Thunk, and Axios, ensuring consistent performance and user experience.',
-        'Built advanced search and filtering features leveraging React Hooks (useMemo, useCallback, useEffect) to minimize unnecessary re-renders, improve rendering performance, and support dynamic theming and multi-language accessibility.',
-        'Led Android application development, managing build pipelines, integrating security checks, and optimizing performance through debouncing and lazy loading techniques.',
-        'Collaborated with product managers and cross-functional teams, and mentored new engineers, accelerating onboarding and improving delivery timelines.',
+        'Shipped Cash Finance & Auto Finance experiences for a major Saudi Arabian bank, across Android, iOS, and Web.',
+        'Built hook-driven search & filtering with dynamic theming and multi-language support, tuned for render performance.',
+        'Led Android delivery end-to-end — build pipelines, security checks, performance — while onboarding new engineers.',
       ],
     },
     {
       company: 'CodeInvicta',
       role: 'Software Development Engineer',
       location: 'Remote',
+      sector: 'E-commerce',
       start: '2022-07-01',
       end: '2024-10-01',
       current: false,
       stack: ['React.js', 'React Native', 'Next.js', 'React Query', 'Shadcn'],
       highlights: [
-        'Developed and optimized responsive, scalable UIs for a large-scale e-commerce platform using React.js, reducing page load times by 15% and improving maintainability.',
-        'Integrated RESTful APIs and optimized data fetching using React Query, improving application performance by 20%.',
-        'Built cross-platform mobile applications using React Native, increasing mobile user engagement by 30%.',
-        'Led frontend development for a major project using Next.js and Shadcn, delivering pixel-perfect UIs aligned with Adobe design specifications.',
-        'Ensured application quality through unit and integration testing (85% coverage) and collaborated closely with backend teams to deliver stable, production-ready features.',
+        'Rebuilt core UI flows for a large-scale e-commerce platform, cutting page load times and improving maintainability.',
+        'Led a pixel-perfect Next.js + Shadcn rebuild matched to Adobe design specs.',
+        'Shipped React Native features that measurably grew mobile engagement, backed by solid test coverage.',
+      ],
+      metrics: [
+        { value: '15%', label: 'faster page loads' },
+        { value: '20%', label: 'better data-fetch perf' },
+        { value: '30%', label: 'more mobile engagement' },
+        { value: '85%', label: 'test coverage' },
       ],
     },
     {
       company: 'UpGrad',
       role: 'Frontend Instructor',
       location: 'Punjab',
+      sector: 'EdTech',
       start: '2022-08-01',
       end: '2022-12-01',
       current: false,
       stack: ['React', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
       highlights: [
-        'Delivered structured training on React, JavaScript (ES6+), HTML5, and CSS3 to 70+ students, focusing on component-based architecture and frontend best practices.',
-        'Designed and developed industry-aligned course content in collaboration with UpGrad, strengthening students’ practical frontend development skills.',
-        'Facilitated hands-on coding sessions and mentored students on JavaScript fundamentals, debugging, and problem-solving to build a strong frontend foundation.',
+        'Trained 70+ students in React and modern JavaScript through hands-on, project-based sessions.',
+        'Built industry-aligned curriculum with UpGrad around component-based architecture and frontend best practices.',
       ],
+      metrics: [{ value: '70+', label: 'students trained' }],
     },
   ],
 

@@ -6,23 +6,33 @@ import Education from './components/Education'
 import SdlcProcess from './components/SdlcProcess'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import Reveal from './components/Reveal'
 import './App.css'
 
 function App() {
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
       <Nav />
       <main id="main-content">
         <Intro />
-        <Experience />
-        <Skills />
-        <Education />
-        <SdlcProcess />
-        <Projects />
-        <Contact />
+        <Reveal>
+          <Experience />
+        </Reveal>
+        <Reveal>
+          <Skills />
+        </Reveal>
+        <Reveal>
+          <Education />
+        </Reveal>
+        <Reveal>
+          <SdlcProcess />
+        </Reveal>
+        <Reveal>
+          <Projects />
+        </Reveal>
+        <Reveal>
+          <Contact />
+        </Reveal>
       </main>
     </>
   )

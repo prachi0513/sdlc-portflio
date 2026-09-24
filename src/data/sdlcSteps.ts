@@ -59,4 +59,16 @@ export const sdlcSteps: SdlcStep[] = [
     description:
       'Each task ended with a summary: what changed, files touched, checks run, and any risks — like this section itself explains its own build process to you, live.',
   },
+  {
+    id: 'cicd',
+    title: '10. CI/CD & deployment',
+    description:
+      'GitHub Actions workflows for CI (lint + build) and deploy were set up early. In practice, fast design iteration happened via direct pushes to main rather than the planned work-branch → feature-pv → main PR flow — branch protection and required PR review are the next step before treating this as production-grade.',
+  },
+  {
+    id: 'security',
+    title: '11. Security considerations',
+    description:
+      'No secrets or API keys live in the codebase. The public page never renders a phone number or email as visible or crawlable text — even though the source resume PDF does — to avoid scraper harvesting. All resume and profile data flows through one typed data file, so nothing sensitive is hardcoded into components.',
+  },
 ]

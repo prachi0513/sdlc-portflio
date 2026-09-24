@@ -31,13 +31,28 @@ function Experience() {
                 {formatRange(entry)}
                 {entry.location ? ` ${'·'} ${entry.location}` : ''}
               </p>
+              {entry.sector && <span className="sector-badge">{entry.sector}</span>}
             </div>
-            <p className="stack">{entry.stack.join(', ')}</p>
+            <ul className="stack-chips">
+              {entry.stack.map((tech) => (
+                <li key={tech}>{tech}</li>
+              ))}
+            </ul>
             <ul className="highlights">
               {entry.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
+            {entry.metrics && entry.metrics.length > 0 && (
+              <ul className="metric-row">
+                {entry.metrics.map((metric) => (
+                  <li key={metric.label} className="metric-chip">
+                    <span className="metric-value">{metric.value}</span>
+                    <span className="metric-label">{metric.label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
             {entry.newSkillsLearned && entry.newSkillsLearned.length > 0 && (
               <div className="new-skills">
                 <p className="new-skills-label">New skills learned</p>

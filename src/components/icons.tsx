@@ -31,4 +31,44 @@ function DownloadIcon() {
   )
 }
 
-export { GithubIcon, LinkedinIcon, DownloadIcon }
+function EmailIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M1.5 3A1.5 1.5 0 0 0 0 4.5v7A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 14.5 3zM1.5 4h13a.5.5 0 0 1 .48.36L8 8.5 1.02 4.36A.5.5 0 0 1 1.5 4M1 5.4V11.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5V5.4l-6.74 4.01a.5.5 0 0 1-.52 0z"
+      />
+    </svg>
+  )
+}
+
+function CopyIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M4 1.5A1.5 1.5 0 0 1 5.5 0h6A1.5 1.5 0 0 1 13 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 4 8.5zm-1 3H2.5A1.5 1.5 0 0 0 1 6v7a1.5 1.5 0 0 0 1.5 1.5h6A1.5 1.5 0 0 0 10 13v-.5H4.5A1.5 1.5 0 0 1 3 11z"
+      />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M13.78 4.22a.75.75 0 0 1 0 1.06l-6.5 6.5a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l2.47 2.47 5.97-5.97a.75.75 0 0 1 1.06 0"
+      />
+    </svg>
+  )
+}
+
+export {
+  GithubIcon,
+  LinkedinIcon,
+  DownloadIcon,
+  EmailIcon,
+  CopyIcon,
+  CheckIcon,
+}

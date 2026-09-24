@@ -39,6 +39,7 @@ export interface ProfileLinks {
   github: string
   linkedin: string
   resume: string
+  email: string
 }
 
 export interface Profile {
@@ -234,5 +235,6 @@ export const profile: Profile = {
     github: 'https://github.com/prachi0513',
     linkedin: 'https://www.linkedin.com/in/prachi-vats-08981a194',
     resume: '/resume.pdf',
+    email: 'vatsprachi10@gmail.com',
   },
 }

@@ -8,6 +8,7 @@ function Contact() {
         <li>
           <a href={profile.links.github} target="_blank" rel="noreferrer">
             GitHub
+            
           </a>
         </li>
         <li>

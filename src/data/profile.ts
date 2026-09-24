@@ -79,13 +79,13 @@ export const profile: Profile = {
       current: true,
       stack: ['React', 'React Native', 'TypeScript', 'JavaScript'],
       highlights: [
-        'Extending the core React / React Native stack into new platform and delivery territory.',
+        "Contributing to Taxmann's core product on React and React Native, with growing ownership of platform and delivery decisions beyond feature work.",
       ],
       newSkillsLearned: [
-        'Indexing',
-        'Building web applications with Tauri (web app to native/desktop-style app)',
+        'Content indexing for faster search and discovery',
+        'Packaging the web app as a native desktop application with Tauri',
         'SSO (Single Sign-On) integration',
-        'Taking an app from a web app to a shippable "website" product',
+        'End-to-end delivery of a web app as a shippable desktop product',
       ],
     },
     {

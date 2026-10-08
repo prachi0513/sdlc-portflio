@@ -27,6 +27,10 @@ The goal is to use AI-assisted development while keeping human decisions, code r
 * Keep components simple and maintainable.
 * Follow the existing project structure and conventions.
 
+## UI Design
+
+For UI/design work, follow @claudeDoc/uiskill.md
+
 ## AI-Native SDLC Rules
 
 Follow this workflow for significant changes:

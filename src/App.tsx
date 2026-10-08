@@ -7,9 +7,12 @@ import SdlcProcess from './components/SdlcProcess'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Reveal from './components/Reveal'
+import { useLenis } from './hooks/useLenis'
 import './App.css'
 
 function App() {
+  useLenis()
+
   return (
     <>
       <Nav />

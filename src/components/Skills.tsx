@@ -1,22 +1,7 @@
-import { useState } from 'react'
 import { profile } from '../data/profile'
-
-function monogram(category: string): string {
-  const words = category.split(/\s+/).filter((word) => word !== '&')
-  if (words.length >= 2) {
-    return (words[0][0] + words[1][0]).toUpperCase()
-  }
-  return category.slice(0, 2).toUpperCase()
-}
+import SkillLabel from './SkillLabel'
 
 function Skills() {
-  const [activeCategory, setActiveCategory] = useState(
-    profile.skillGroups[0].category,
-  )
-  const activeGroup =
-    profile.skillGroups.find((group) => group.category === activeCategory) ??
-    profile.skillGroups[0]
-
   return (
     <section id="skills">
       <h2>Skills</h2>
@@ -31,33 +16,22 @@ function Skills() {
         </ul>
       </div>
 
-      <div className="skill-tabs" role="tablist" aria-label="Skill categories">
-        {profile.skillGroups.map((group) => {
-          const isActive = group.category === activeCategory
-          return (
-            <button
-              key={group.category}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              className={`skill-tab${isActive ? ' skill-tab-active' : ''}`}
-              onClick={() => setActiveCategory(group.category)}
-            >
-              <span className="skill-group-monogram" aria-hidden="true">
-                {monogram(group.category)}
-              </span>
+      <div className="skill-rows">
+        {profile.skillGroups.map((group) => (
+          <div key={group.category} className="skill-row">
+            <h3>
               {group.category}
-            </button>
-          )
-        })}
-      </div>
-
-      <div className="skill-group" role="tabpanel">
-        <ul>
-          {activeGroup.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+              <span className="skill-count">{group.items.length}</span>
+            </h3>
+            <ul className="skill-tiles">
+              {group.items.map((item) => (
+                <li key={item}>
+                  <SkillLabel name={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   )

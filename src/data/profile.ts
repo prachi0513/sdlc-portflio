@@ -8,6 +8,7 @@ export interface Metric {
 
 export interface ExperienceEntry {
   company: string
+  url?: string
   role: string
   location?: string
   sector?: string
@@ -59,7 +60,7 @@ export const profile: Profile = {
   name: 'Prachi Vats',
   role: 'Software Development Engineer',
   summary:
-    "I turn product requirements into fast, accessible interfaces — from a Saudi bank's finance app to a large-scale e-commerce platform — across React, React Native, and Next.js. Right now I'm pushing into new territory: shipping web apps as native desktop products with Tauri, and using AI-assisted workflows (like the one that built this site) to move faster without cutting corners.",
+    "I'm a frontend engineer who enjoys the part of the internet people actually touch: buttons that respond, pages that load quickly, and screens that work for everyone. Over the past four years I've been lucky to turn a lot of \"can we make it do this?\" questions into real products, and to help 70+ people learn to build them too. These days I'm learning how to take web apps from the browser to the desktop with Tauri, and using AI for the repetitive parts (this site included), while I review everything it writes.",
 
   stats: [
     { value: '4+', label: 'Years of experience' },
@@ -73,7 +74,9 @@ export const profile: Profile = {
   experience: [
     {
       company: 'Taxmann Technologies',
+      url: 'https://www.taxmanntechnologies.com/',
       role: 'Software Engineer',
+      location: 'Delhi',
       sector: 'Legal & Tax Tech',
       start: '2025-03-03',
       end: 'present',
@@ -91,6 +94,7 @@ export const profile: Profile = {
     },
     {
       company: 'Newgen Software',
+      url: 'https://newgensoft.com/',
       role: 'Software Engineer',
       location: 'Noida',
       sector: 'Banking & Fintech',
@@ -106,6 +110,7 @@ export const profile: Profile = {
     },
     {
       company: 'CodeInvicta',
+      url: 'https://www.codeinvicta.com/',
       role: 'Software Development Engineer',
       location: 'Remote',
       sector: 'E-commerce',
@@ -127,6 +132,7 @@ export const profile: Profile = {
     },
     {
       company: 'UpGrad',
+      url: 'https://www.upgrad.com/',
       role: 'Frontend Instructor',
       location: 'Punjab',
       sector: 'EdTech',
@@ -177,6 +183,15 @@ export const profile: Profile = {
         'Agile/Scrum',
         'Code Reviews',
         'Client & Stakeholder Management',
+      ],
+    },
+    {
+      category: 'AI & Automation',
+      items: [
+        'Claude Code',
+        'AI-assisted development',
+        'Prompt engineering',
+        'AI-native SDLC',
       ],
     },
   ],

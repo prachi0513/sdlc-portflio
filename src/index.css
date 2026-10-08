@@ -1,43 +1,51 @@
+/* Monochrome + Cobalt. Light is the default; dark applies via data-theme. */
 :root {
-  --text: #4a463f;
-  --text-h: #1c1a17;
-  --bg: #f7f5f2;
-  --bg-alt: #efebe4;
-  --border: #e2dcd1;
-  --code-bg: #efe9dd;
-  --accent: #8f5a18;
-  --accent-text: #8f5a18;
-  --accent-strong: #6e4310;
-  --accent-soft: #c89550;
-  --accent-bg: rgba(143, 90, 24, 0.1);
-  --accent-border: rgba(143, 90, 24, 0.4);
-  --sector-bg: #f1e4cc;
-  --sector-text: #6e4310;
-  --social-bg: rgba(239, 233, 221, 0.7);
+  --gutter: max(40px, calc((100vw - 1200px) / 2));
+  --frame-gap: 24px; /* space between the grid lines and the content */
+  --grid-line: color-mix(in srgb, var(--text) 24%, transparent);
+  --grid-mark: color-mix(in srgb, var(--text) 85%, transparent);
+  --text: #5a5034;
+  --text-h: #231d0f;
+  --bg: #f6ecc9;
+  --surface: #ece0b8;
+  --bg-alt: var(--surface);
+  --border: #dacd9f;
+  --code-bg: var(--surface);
+  --accent: #2d4bd8;
+  --accent-text: #2d4bd8;
+  --accent-strong: #2340b8;
+  --accent-soft: #6f86e8;
+  --accent-bg: rgba(45, 75, 216, 0.08);
+  --accent-border: rgba(45, 75, 216, 0.35);
+  --sector-bg: var(--accent-bg);
+  --sector-text: var(--accent-strong);
+  --social-bg: var(--surface);
   --shadow:
-    rgba(28, 26, 23, 0.08) 0 10px 15px -3px, rgba(28, 26, 23, 0.05) 0 4px 6px -2px;
+    rgba(35, 29, 15, 0.06) 0 1px 2px, rgba(35, 29, 15, 0.09) 0 8px 24px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  font: 16px/1.6 var(--sans);
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 28px;
+    --frame-gap: 14px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,38 +54,37 @@ html {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #c7c6d1;
-    --text-h: #f1f0f5;
-    --bg: #12141c;
-    --bg-alt: #191c26;
-    --border: #2a2e3b;
-    --code-bg: #1e212c;
-    --accent: #e0a94d;
-    --accent-text: #e0a94d;
-    --accent-strong: #f0c077;
-    --accent-soft: #b98a44;
-    --accent-bg: rgba(224, 169, 77, 0.15);
-    --accent-border: rgba(224, 169, 77, 0.5);
-    --sector-bg: rgba(224, 169, 77, 0.16);
-    --sector-text: #e0a94d;
-    --social-bg: rgba(30, 33, 44, 0.7);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+:root[data-theme='dark'] {
+  --text: #9a9aa2;
+  --text-h: #ededef;
+  --bg: #0b0b0d;
+  --surface: #151517;
+  --border: #26262a;
+  --accent: #4a66e6;
+  --accent-text: #8da2f7;
+  --accent-strong: #a9b8fa;
+  --accent-soft: #6f86e8;
+  --accent-bg: rgba(141, 162, 247, 0.12);
+  --accent-border: rgba(141, 162, 247, 0.4);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 1px 2px, rgba(0, 0, 0, 0.35) 0 8px 24px;
+  color-scheme: dark;
+}
+
+/* Added briefly by useTheme while toggling so colors fade, not snap. */
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease !important;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 body {
@@ -92,37 +99,21 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   font-weight: 600;
-  line-height: 118%;
-  letter-spacing: -0.24px;
   margin: 0 0 24px;
-  padding-left: 16px;
-  position: relative;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
 }
 
-h2::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 4px;
-  border-radius: 2px;
-  background: var(--accent);
+h2 {
+  font-size: clamp(31px, 4vw, 49px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 48px;
 }
+
 p {
   margin: 0;
 }

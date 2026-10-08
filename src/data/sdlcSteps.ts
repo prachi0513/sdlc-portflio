@@ -72,3 +72,48 @@ export const sdlcSteps: SdlcStep[] = [
       'No secrets or API keys live in the codebase. The public page never renders a phone number or email as visible or crawlable text — even though the source resume PDF does — to avoid scraper harvesting. All resume and profile data flows through one typed data file, so nothing sensitive is hardcoded into components.',
   },
 ]
+
+export interface SdlcPhase {
+  id: string
+  title: string
+  summary: string
+  stepIds: string[]
+}
+
+/** The 11 steps grouped into 5 phases, shown as stacked cards. */
+export const sdlcPhases: SdlcPhase[] = [
+  {
+    id: 'discover',
+    title: 'Discover',
+    summary:
+      'Know who the site is for and what already exists before touching anything.',
+    stepIds: ['understand', 'inspect'],
+  },
+  {
+    id: 'plan',
+    title: 'Plan',
+    summary:
+      'Write the intent and the plan down so decisions are visible and reviewable.',
+    stepIds: ['intent', 'plan'],
+  },
+  {
+    id: 'build',
+    title: 'Approve & build',
+    summary:
+      'A human signs off first, then the work happens in small, reviewable pieces.',
+    stepIds: ['approval', 'implement'],
+  },
+  {
+    id: 'verify',
+    title: 'Verify',
+    summary:
+      'Checks and a diff review after every change, with gaps called out honestly.',
+    stepIds: ['test', 'review'],
+  },
+  {
+    id: 'ship',
+    title: 'Ship',
+    summary: 'Report, deploy, and keep the site safe.',
+    stepIds: ['report', 'cicd', 'security'],
+  },
+]

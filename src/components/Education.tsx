@@ -1,4 +1,5 @@
 import { profile } from '../data/profile'
+import { formatRange } from '../utils/dates'
 
 function Education() {
   return (
@@ -30,15 +31,18 @@ function Education() {
       </ul>
 
       <h2 className="internships-heading">Internships</h2>
-      <ul className="experience-list">
+      <ul className="internship-list">
         {profile.internships.map((entry) => (
-          <li key={`${entry.company}-${entry.start}`} className="experience-entry">
-            <div className="experience-header">
+          <li
+            key={`${entry.company}-${entry.start}`}
+            className="internship-card"
+          >
+            <div className="internship-header">
               <h3>
-                {entry.role} <span className="company">{'·'} {entry.company}</span>
+                {entry.role} <span className="company">{entry.company}</span>
               </h3>
               <p className="dates">
-                {entry.start} – {entry.end}
+                {formatRange(entry)}
                 {entry.location ? ` ${'·'} ${entry.location}` : ''}
               </p>
             </div>

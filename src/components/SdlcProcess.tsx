@@ -1,5 +1,8 @@
-import { useState, Fragment } from 'react'
-import { sdlcSteps } from '../data/sdlcSteps'
+import { Fragment } from 'react'
+import { sdlcPhases, sdlcSteps, type SdlcStep } from '../data/sdlcSteps'
+import { siteStack } from '../data/siteStack'
+import SkillLabel from './SkillLabel'
+import StackedCards from './StackedCards'
 
 const fileRefPattern = /\b[\w.-]+\.(?:md|pdf)\b/g
 
@@ -19,56 +22,60 @@ function renderDescription(text: string) {
   })
 }
 
-function SdlcProcess() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const activeStep = sdlcSteps[activeIndex]
-  const activeLabel = activeStep.title.replace(/^\d+\.\s*/, '')
+const stepsById: Record<string, SdlcStep> = Object.fromEntries(
+  sdlcSteps.map((step) => [step.id, step]),
+)
 
+function SdlcProcess() {
   return (
     <section id="sdlc-process">
       <h2>How this site was built</h2>
       <p className="sdlc-intro">
         This site is also a learning project for an AI-native software
-        development lifecycle. Step through the process to see what actually
-        happened at each stage for this project.
+        development lifecycle. Here is what actually happened at each stage, in
+        five phases.
       </p>
-      <div className="sdlc-panel">
-        <nav className="sdlc-steps-nav" aria-label="SDLC steps">
-          {sdlcSteps.map((step, index) => {
-            const isActive = index === activeIndex
-            const label = step.title.replace(/^\d+\.\s*/, '')
-            return (
-              <button
-                key={step.id}
-                type="button"
-                className={`sdlc-nav-item${isActive ? ' sdlc-nav-item-active' : ''}`}
-                aria-current={isActive}
-                onClick={() => setActiveIndex(index)}
-              >
-                <span className="sdlc-nav-index">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                {label}
-              </button>
-            )
-          })}
-        </nav>
 
-        <div className="sdlc-terminal">
-          <div className="browser-chrome">
-            <span className="browser-dot" />
-            <span className="browser-dot" />
-            <span className="browser-dot" />
-            <span className="sdlc-terminal-path">
-              ~/sdlc/{String(activeIndex + 1).padStart(2, '0')}-{activeStep.id}.log
-            </span>
+      <StackedCards>
+        {sdlcPhases.map((phase, index) => (
+          <div key={phase.id} className="phase">
+            <div className="phase-head">
+              <span className="phase-number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{phase.title}</h3>
+              <p>{phase.summary}</p>
+            </div>
+            <ol className="phase-steps">
+              {phase.stepIds.map((id) => {
+                const step = stepsById[id]
+                return (
+                  <li key={id}>
+                    <h4>{step.title.replace(/^\d+\.\s*/, '')}</h4>
+                    <p>{renderDescription(step.description)}</p>
+                  </li>
+                )
+              })}
+            </ol>
           </div>
-          <div className="sdlc-terminal-body" key={activeStep.id}>
-            <p className="sdlc-terminal-prompt">$ cat {activeLabel.toLowerCase().replace(/\s+/g, '-')}.log</p>
-            <p className="sdlc-terminal-output">
-              {renderDescription(activeStep.description)}
-            </p>
-          </div>
+        ))}
+      </StackedCards>
+
+      <div className="site-stack">
+        <h3>The stack</h3>
+        <div className="site-stack-groups">
+          {siteStack.map((group) => (
+            <div key={group.label} className="site-stack-group">
+              <p className="site-stack-label">{group.label}</p>
+              <ul className="stack-chips">
+                {group.items.map((item) => (
+                  <li key={item}>
+                    <SkillLabel name={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

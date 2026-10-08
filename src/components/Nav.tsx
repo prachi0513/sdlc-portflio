@@ -1,3 +1,7 @@
+import { useTheme } from '../hooks/useTheme'
+import { profile } from '../data/profile'
+import { MoonIcon, SunIcon } from './icons'
+
 const navItems = [
   { href: '#intro', label: 'Intro' },
   { href: '#experience', label: 'Experience' },
@@ -9,8 +13,14 @@ const navItems = [
 ]
 
 function Nav() {
+  const { theme, toggle } = useTheme()
+  const next = theme === 'dark' ? 'light' : 'dark'
+
   return (
     <nav aria-label="Section navigation">
+      <a href="#intro" className="nav-brand">
+        {profile.name}
+      </a>
       <ul className="nav-list">
         {navItems.map((item) => (
           <li key={item.href}>
@@ -18,6 +28,14 @@ function Nav() {
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        className="theme-toggle"
+        onClick={toggle}
+        aria-label={`Switch to ${next} mode`}
+      >
+        {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      </button>
     </nav>
   )
 }

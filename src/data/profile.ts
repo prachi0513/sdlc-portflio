@@ -81,15 +81,11 @@ export const profile: Profile = {
       start: '2025-03-03',
       end: 'present',
       current: true,
-      stack: ['React', 'React Native', 'TypeScript', 'JavaScript'],
+      stack: ['React', 'React Native', 'TypeScript', 'JavaScript', 'Tauri'],
       highlights: [
-        "Contributing to Taxmann's core product on React and React Native, with growing ownership of platform and delivery decisions beyond feature work.",
-      ],
-      newSkillsLearned: [
-        'Content indexing for faster search and discovery',
-        'Packaging the web app as a native desktop application with Tauri',
-        'SSO (Single Sign-On) integration',
-        'End-to-end delivery of a web app as a shippable desktop product',
+        "Contributing to Taxmann's core product on React and React Native, including content indexing for faster search, with growing ownership of platform and delivery decisions.",
+        'Built a responsive landing page in React and TypeScript, translating Figma designs into reusable, maintainable components with consistent, pixel-accurate layouts.',
+        'Shipped the web app as a cross-platform Tauri desktop product: implemented single sign-on with secure, OS-level credential storage, and set up build and release pipelines for Windows and macOS.',
       ],
     },
     {

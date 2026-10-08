@@ -9,10 +9,7 @@ function Intro() {
         <h1>{profile.name}</h1>
         <p className="summary">{profile.summary}</p>
         <div className="hero-actions">
-          <a href={profile.links.resume} download className="hero-cta">
-            Download resume
-          </a>
-          <a href="#experience" className="hero-cta hero-cta-secondary">
+          <a href="#experience" className="hero-cta">
             Experience
           </a>
           <a href="#projects" className="hero-cta hero-cta-secondary">
